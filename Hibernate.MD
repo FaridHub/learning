@@ -1,7 +1,7 @@
-#Hibernate
+# Hibernate
 
 Credits: * https://www.youtube.com/playlist?list=PLyHJZXNdCXsdC-p2186C6NO4FpadnCC_q
-##Annotations in hibernate
+## Annotations in hibernate
    * Entity: Used for model classes to mark them as Entity Beans.
    * Table: Specifying a Table.
    * Access:
@@ -11,13 +11,13 @@ Credits: * https://www.youtube.com/playlist?list=PLyHJZXNdCXsdC-p2186C6NO4FpadnC
    * Cascade: Cascading the data in the tables.
    * PrimaryKeyJoinColumn: Used to define property for foreign key.
 
-##Hibernate ORM Process
+## Hibernate ORM Process
 Create POJO classes -> Create mapping files -> Create configuration file ->Business logic (Service class) ->Run the application.
 
-##Session get() vs load()
+## Session get() vs load()
 Get() method follows instant loading, whereas load() method follows lazy loading.
 
-##Hibernate Cache:
+## Hibernate Cache:
 * First level cache
    first level cache is by default, The data is not visible to other sessions, on session close without save the data will be lost.
    It improves performance, one can clear or evict the cache.
@@ -26,16 +26,16 @@ Get() method follows instant loading, whereas load() method follows lazy loading
    Different types of second level caches are there.
 * Query cache:
 
-##Entity Lifecycle and states:
+## Entity Lifecycle and states:
 * New - > session.save(bean) Beans are not present in DB but present in the persistence context.
 * Managed -> session.get(bean) All the beans travel through managed state during creation, get(), etc...
 * Detached -> session.clear() takes the bean lifecycle to detached state.
 * Removed -> session.delete(bean) takes the bean to removed state.
 
-####Persistence Context: It contains al the entity beans which are grabbed from DB.
+#### Persistence Context: It contains al the entity beans which are grabbed from DB.
 
 
-##Transaction:
+## Transaction:
 ### Propagation:
 * Required: (Default) This propagation is  
 * RequiresNew: This is used if the first table entry is used as foreign key in second table.
@@ -45,11 +45,11 @@ Get() method follows instant loading, whereas load() method follows lazy loading
 * Supports: Allows both transaction or not (flexible).
 
 ## Hibernate N+1 problem.
-####Problem 
+#### Problem 
 The problem with hibernate queries is that if the data is nested i.e Table1 has Table2, intern Table has Table3 then hql queries are fired with 3(N+1) where 3 is for tables and N is for records in each table.
 If the table rows dramatically increases then the queries are too many to process. This drains the performance of the
 application.
-####Solution
+#### Solution
 We need to use 
 * Left Join and fetch mechanism 
 * Entity Graphs; available in both Hql and Spring JPA 2.1 to overcome this problem.
